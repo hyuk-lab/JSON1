@@ -5,41 +5,43 @@ $idade = $_POST['idade'];
 $email = $_POST['email'];
 $cidade = $_POST['cidade'];
 
-
- $matematica = $_POST['matematica'];
- $portugues = $_POST['portugues'];
- $historia  = $_POST['historia'];
-
+$matematica = $_POST['matematica'];
+$portugues = $_POST['portugues'];
+$historia  = $_POST['historia'];
 
 include "cursos.php";
 include "cliente.php";
 
+// Criamos um objeto do tipo Cliente (Aluno)
+$aluno = new Cliente();
+$aluno->nome = $nome;
+$aluno->idade = $idade;
+$aluno->email = $email;
+$aluno->cidade = $cidade;
 
-//criamos um objeto do tipo cliente
-$cliente = new Cliente();
-$cliente->nome = $nome;
-$cliente->idade = $idade;
-$cliente->email = $email;
-$cliente->cidade = $cidade;
+// Criamos um array para armazenar as disciplinas e seus resultados
+$disciplinas = [
+    "matematica" => $matematica,
+    "portugues" => $portugues,
+    "historia" => $historia
+];
 
+// Criamos um array com os dados estruturados corretamente
+$dados = [
+    "Aluno" => [
+        "nome" => $aluno->nome,
+        "idade" => $aluno->idade,
+        "email" => $aluno->email,
+        "cidade" => $aluno->cidade,
+        "Disciplinas" => $disciplinas
+    ]
+];
 
-$cursos = new Cursos();
-$cursos->matematica = $matematica;
-$cursos->portugues = $portugues;
-$cursos->historia = $historia;
+// Transformamos o array em JSON
+$json = json_encode($dados, JSON_PRETTY_PRINT);
 
-
-
-//transformamos o objeto em json
-//o json fica armazenado na memória
-$json = json_encode($cliente);
-
-$json = json_encode ($cursos);
-
-//salvamos o json num arquivo 
-file_put_contents('cliente.json', $json);
-
-file_put_contents('curso.json', $json);
+// Salvamos o JSON em um arquivo
+file_put_contents('dados.json', $json);
 
 header("Location: formulario.php");
 exit();

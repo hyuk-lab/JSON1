@@ -1,0 +1,13 @@
+{
+    "Aluno": {
+        "nome": "gabriel",
+        "idade": "12",
+        "email": "go239139@gmail.com",
+        "cidade": "Mogi Mirim",
+        "Disciplinas": {
+            "matematica": "Reprovado",
+            "portugues": "Aprovado",
+            "historia": "Aprovado"
+        }
+    }
+}

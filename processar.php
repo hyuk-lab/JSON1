@@ -9,11 +9,11 @@ $matematica = $_POST['matematica'];
 $portugues = $_POST['portugues'];
 $historia  = $_POST['historia'];
 
-include "cursos.php";
-include "cliente.php";
+
+include "aluno.php";
 
 // Criamos um objeto do tipo Cliente (Aluno)
-$aluno = new Cliente();
+$aluno = new Aluno();
 $aluno->nome = $nome;
 $aluno->idade = $idade;
 $aluno->email = $email;

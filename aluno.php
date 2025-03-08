@@ -1,5 +1,5 @@
 <?php
-class Cliente {
+class Aluno {
 
 public $nome;
 public $idade;
